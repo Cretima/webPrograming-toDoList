@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        background-color: beige;
+      }
+      .todo-title {
+        text-align: center;
+        margin-bottom: 15px;
+        color: black;
+        font-size: 30px;
+      }
+      hr {
+        height: 0.5px;
+        background-color: lightgray;
+        border: none;
+        margin-top: 16px;
+        margin-bottom: 16px;
+      }
+      .main {
+        width: 40%;
+        height: auto;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        margin-top: 30px;
+        background-color: white;
+        box-shadow: 0 10px 10px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+      }
+      .todo-form {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      }
+      .input-box {
+        display: flex;
+        border: 1px solid lightgray;
+        border-radius: 4px;
+      }
+      .input-box:focus-within {
+        border-color: rgb(157, 72, 238);
+      }
+      .input-text {
+        width: 100%;
+        padding: 6px 12px;
+        outline: none;
+        border: none;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      .submitBtn {
+        width: 50px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        color: white;
+        background-color: rgb(20, 170, 20);
+        border: 1px solid rgb(10, 160, 10);
+        color: white;
+        cursor: pointer;
+        outline: none;
+        font-weight: bold;
+      }
+      .submitBtn:hover {
+        opacity: 1;
+        transition: opacity 0.5s;
+      }
+      .todo-list {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0;
+        position: relative;
+      }
+      .listItem {
+        display: inline-block;
+        padding: 10px;
+        background-color: rgb(237, 237, 237);
+        border-radius: 2px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      .listItem:hover {
+        box-shadow: 1px 1px 3px gray;
+      }
+      .delBtn {
+        color: black;
+        background-color: white;
+        border: 1px solid white;
+        border-radius: 2px;
+        position: absolute;
+        padding: 0;
+        padding-right: 4px;
+        padding-left: 4px;
+        right: 10px;
+        cursor: pointer;
+      }
+      p.info {
+		margin-top: 1.5rem;
+		text-align: center;
+		color: #ccc;
+      }
+    </style>
+    <title>My To Do List</title>
+  </head>
+  <body>
+    <!-- html 부분 -->
+    <div class="main">
+      <h2 class="todo-title">My ToDo App</h2>
+      <hr />
+      <div class="todo-form">
+        <div class="input-box">
+          <input id="item" class="input-text" type="text" placeholder="할일을 입력해 주세요!"/>
+          <button class="submitBtn" onclick="addItem()">할일 추가</button>
+        </div>
+        <ul id="todo-list" class="todo-list"></ul>
+        <p class="info">Insert a new task in box</p>
+      </div>
+    </div>
+    <script>
+        function addItem() {
+          let item = document.getElementById("item");
+          let list = document.getElementById("todo-list");
+          let listItem = document.createElement("ul");
+          let delBtn = document.createElement("button");
+          
+          delBtn.classList.add("delBtn");
+          delBtn.innerText = "✖";
+          delBtn.onclick = function (e) {
+            let pnode = e.target.parentNode;
+            list.removeChild(pnode);
+          };
+          listItem.classList.add("listItem");
+          listItem.innerText = item.value;
+          listItem.appendChild(delBtn);
+          list.appendChild(listItem);
+          item.value = "";
+          item.focus();
+        }
+      </script>
+  </body>
+</html>
