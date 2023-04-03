@@ -6,6 +6,7 @@ ToDoList 구현
 
 # Result
 * 초기화면
+
 ![image](https://user-images.githubusercontent.com/97109414/229394393-9594d1f0-304f-47fc-a8e0-ee45234c0e00.png)
 ---
 * 할일 입력 및 추가
